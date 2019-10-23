@@ -21,11 +21,12 @@ struct node * insert_front(struct node * list, int val){
 }
 
 struct node * free_list(struct node * list) {
-  if( list != NULL ) {
-    //recursive: results in last element being freed first
-    free_list( list -> next );
-    printf("\t[freeing node with value %d]\n",list -> val);
+  struct node * next;
+  while(list != NULL) {
+    next = list -> next;
+    printf("\t[freeing node @%p: %d]\n",list,list -> val);
     free(list);
+    list = next;
   }
   return NULL;
 }
