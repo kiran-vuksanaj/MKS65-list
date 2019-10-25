@@ -33,10 +33,10 @@ struct node * free_list(struct node * list) {
 
 struct node * remove_val(struct node * list, int val) {
   struct node * current = list;
-  struct node * prev;
+  struct node * prev = NULL;
   while( current ) { // while list is not at its end
+    printf("@%p: %d\n",current,current -> val);
     if(val == current -> val) {
-      printf("@%p: %d\n",current,current -> val);
       // value found: remove node
       if( prev ) {
         // case: not the first element
@@ -45,10 +45,10 @@ struct node * remove_val(struct node * list, int val) {
         free(current);
         return list;
       }else {
-        // bug here!
         // case: is the first element
         // change return value of list
         list = current -> next;
+        // printf("new list starting: %p\n",list);
         free(current);
         return list;
       }

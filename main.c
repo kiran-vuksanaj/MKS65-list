@@ -45,6 +45,7 @@ void testremove() {
   size_t listsize2 = rand() % 25 + 3;
   printf("listsize 2: %lu\n",listsize2);
   size_t index_to_insert = rand() % listsize2;
+  // size_t index_to_insert = listsize2 - 1;
   struct node * list2 = NULL;
   size_t i;
   for( i = 0; i < listsize2; i++ ) {
@@ -63,7 +64,7 @@ void testremove() {
   print_list(list2);
   printf("Value to remove: %d\n",val_to_remove);
   printf("Removing...\n");
-  remove_val(list2,val_to_remove);
+  list2 = remove_val(list2,val_to_remove);
   printf("Array after removal: ");
   print_list(list2);
 }
