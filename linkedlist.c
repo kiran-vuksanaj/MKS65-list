@@ -30,3 +30,26 @@ struct node * free_list(struct node * list) {
   }
   return NULL;
 }
+
+struct node * remove_val(struct node * list, int val) {
+  struct node * current = list;
+  struct node * prev;
+  while( current ) { // while list is not at its end
+    if(val == current -> val) {
+      // value found: remove node
+      if( prev ) {
+        // case: not the first element
+        // change previous node's next value
+        prev -> next = current -> next;
+        free(current);
+        return list;
+      }else {
+        // case: is the first element
+        // change return value of list
+        list = current -> next;
+        free(current);
+        return list;
+      }
+    }
+  }
+}

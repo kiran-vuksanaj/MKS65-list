@@ -10,4 +10,6 @@ void print_list( struct node *list );
 struct node * insert_front(struct node * list, int val);
 struct node * free_list(struct node * list);
 
+struct node * remove_val(struct node * front, int val);
+
 #endif
