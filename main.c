@@ -4,6 +4,8 @@
 
 #include"linkedlist.h"
 
+void testremove();
+
 int main(){
   printf("Linked List! W03\nKiran Vuksanaj\n");
   time_t seed = time(NULL);
@@ -32,5 +34,36 @@ int main(){
 
   printf("Print emptied list: ");
   print_list(list);
+
+  testremove();
+
   return 0;
+}
+
+void testremove() {
+  int val_to_remove = rand() % 1000 - 500;
+  size_t listsize2 = rand() % 25 + 3;
+  printf("listsize 2: %lu\n",listsize2);
+  size_t index_to_insert = rand() % listsize2;
+  struct node * list2 = NULL;
+  size_t i;
+  for( i = 0; i < listsize2; i++ ) {
+    // printf("adding value..\n");
+    if( i == index_to_insert ) {
+      list2 = insert_front(list2,val_to_remove);
+    }else {
+      int val = rand() % 1000 - 500;
+      while(val == val_to_remove){
+        val = rand() % 1000 - 500;
+      }
+      list2 = insert_front( list2, val );
+    }
+  }
+  printf("New random array: ");
+  print_list(list2);
+  printf("Value to remove: %d\n",val_to_remove);
+  printf("Removing...\n");
+  remove_val(list2,val_to_remove);
+  printf("Array after removal: ");
+  print_list(list2);
 }
