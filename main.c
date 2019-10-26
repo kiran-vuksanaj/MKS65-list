@@ -22,7 +22,7 @@ int main(){
   size_t i;
   for( i = 0; i < listsize; i++ ) {
     int val = rand() % 100 - 50;
-    printf("\tInserting %d\n",val);
+    // printf("\tInserting %d\n",val);
     list = insert_front(list,val);
   }
 
@@ -60,11 +60,15 @@ void testremove() {
       list2 = insert_front( list2, val );
     }
   }
-  printf("New random array: ");
+  printf("New random list: ");
   print_list(list2);
   printf("Value to remove: %d\n",val_to_remove);
   printf("Removing...\n");
   list2 = remove_val(list2,val_to_remove);
-  printf("Array after removal: ");
+  printf("list after removal: ");
+  print_list(list2);
+
+  list2 = free_list(list2);
+  printf("freed list: ");
   print_list(list2);
 }

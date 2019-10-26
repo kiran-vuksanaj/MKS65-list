@@ -24,7 +24,7 @@ struct node * free_list(struct node * list) {
   struct node * next;
   while(list != NULL) {
     next = list -> next;
-    printf("\t[freeing node @%p: %d]\n",list,list -> val);
+    // printf("\t[freeing node @%p: %d]\n",list,list -> val);
     free(list);
     list = next;
   }
@@ -35,7 +35,7 @@ struct node * remove_val(struct node * list, int val) {
   struct node * current = list;
   struct node * prev = NULL;
   while( current ) { // while list is not at its end
-    printf("@%p: %d\n",current,current -> val);
+    // printf("@%p: %d\n",current,current -> val);
     if(val == current -> val) {
       // value found: remove node
       if( prev ) {
